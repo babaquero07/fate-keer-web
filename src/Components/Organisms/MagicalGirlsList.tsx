@@ -7,7 +7,7 @@ const MagicalGirlsList = ({ girls }: { girls: MagicalGirl[] }) => {
     <ul className="flex justify-center items-center flex-wrap gap-6 py-8">
       {girls.map((girl: MagicalGirl) => (
         <li key={girl.id}>
-          <Link to={`/magical-girl/${girl.id}`}>
+          <Link to={`/magical-girls/${girl.id}`}>
             <MagicGirlCard girl={girl} />
           </Link>
         </li>
