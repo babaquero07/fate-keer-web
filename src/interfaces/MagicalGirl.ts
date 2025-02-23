@@ -15,3 +15,11 @@ interface statusLog {
   observation: string;
   created_at: string;
 }
+
+export interface CreateMagicalGirl
+  extends Omit<
+    MagicalGirl,
+    "id" | "created_at" | "updated_at" | "status_logs"
+  > {
+  status: "Active" | "Rescued" | "Disappeared";
+}
