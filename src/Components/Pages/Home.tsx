@@ -2,7 +2,10 @@ import { useEffect } from "react";
 import useMagicalGirls from "../../hooks/useMagicalGirls";
 import StatusFilter from "../Molecules/StatusFilter";
 import MagicalGirlsList from "../Organisms/MagicalGirlsList";
-import { STATUS_OPTIONS, StatusOption } from "../../utils/constants";
+import {
+  FILTER_STATUS_OPTIONS,
+  FilterStatusOption,
+} from "../../utils/constants";
 
 const Home = () => {
   const { getMagicalGirls, magicalGirls, isLoading, error, filterByStatus } =
@@ -27,8 +30,8 @@ const Home = () => {
 
       <div className="w-full flex justify-start">
         <StatusFilter
-          options={STATUS_OPTIONS}
-          onChange={(value) => filterByStatus(value as StatusOption)}
+          options={FILTER_STATUS_OPTIONS}
+          onChange={(value) => filterByStatus(value as FilterStatusOption)}
           className="text-white"
         />
       </div>
