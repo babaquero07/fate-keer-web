@@ -7,4 +7,11 @@ export interface MagicalGirl {
   contract_date: string;
   created_at: string;
   updated_at: string | null;
+  status_logs?: statusLog[];
+}
+
+interface statusLog {
+  id: number;
+  observation: string;
+  created_at: string;
 }
