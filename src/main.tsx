@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import Layout from "./Components/Templates/Layout.tsx";
 import Home from "./Components/Pages/Home.tsx";
 import MagicGirl from "./Components/Pages/MagicGirl.tsx";
+import Create from "./Components/Pages/Create.tsx";
 
 import "./index.css";
 
@@ -14,8 +15,8 @@ createRoot(document.getElementById("root")!).render(
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="magical-girls">
-            <Route index element={<MagicGirl />} />
             <Route path=":id" element={<MagicGirl />} />
+            <Route path="/magical-girls/create" element={<Create />} />
           </Route>
         </Route>
       </Routes>

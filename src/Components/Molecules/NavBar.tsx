@@ -17,7 +17,9 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <Button text="Create Magical Girl" />
+          <NavLink to="/magical-girls/create">
+            <Button text="Create Magical Girl" />
+          </NavLink>
         </li>
       </ul>
     </nav>
