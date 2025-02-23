@@ -2,6 +2,7 @@ import { useEffect, useMemo } from "react";
 import { useParams } from "react-router";
 import useMagicalGirls from "../../hooks/useMagicalGirls";
 import MagicGirlCard from "../Molecules/MagicGirlCard";
+import Loading from "../Atoms/Loading";
 
 const MagicGirl = () => {
   const { id } = useParams();
@@ -22,8 +23,7 @@ const MagicGirl = () => {
     }
   };
 
-  // TODO: Create a loading component
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loading />;
 
   // TODO: Create a error component
   if (error)

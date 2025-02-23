@@ -6,6 +6,7 @@ import {
   FILTER_STATUS_OPTIONS,
   FilterStatusOption,
 } from "../../utils/constants";
+import Loading from "../Atoms/Loading";
 
 const Home = () => {
   const { getMagicalGirls, magicalGirls, isLoading, error, filterByStatus } =
@@ -15,8 +16,7 @@ const Home = () => {
     getMagicalGirls();
   }, []);
 
-  // TODO: Create a loading component
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loading />;
 
   if (error && error.name !== "AbortError") {
     return alert(error.message);
