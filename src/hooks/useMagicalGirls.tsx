@@ -54,9 +54,7 @@ const useMagicalGirls = () => {
       return;
     }
 
-    const filtered = magicalGirls.filter(
-      (girl) => girl.status.toLowerCase() === status
-    );
+    const filtered = magicalGirls.filter((girl) => girl.status === status);
     setFilteredGirls(filtered);
   };
 
