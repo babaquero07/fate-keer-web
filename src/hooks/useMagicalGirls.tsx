@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MagicalGirl } from "../interfaces/MagicalGirl";
+import { CreateMagicalGirl, MagicalGirl } from "../interfaces/MagicalGirl";
 import { StatusOption } from "../utils/constants";
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -8,11 +8,13 @@ const useMagicalGirls = () => {
   const [magicalGirls, setMagicalGirls] = useState<MagicalGirl[]>([]);
   const [magicalGirl, setMagicalGirl] = useState<MagicalGirl | null>(null);
   const [filteredGirls, setFilteredGirls] = useState<MagicalGirl[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
   const getMagicalGirls = async () => {
     try {
+      setIsLoading(true);
+
       const response = await fetch(`${API_URL}/magical-girls`);
       if (!response.ok) {
         throw new Error("Failed to fetch magical girls");
@@ -104,6 +106,30 @@ const useMagicalGirls = () => {
     }
   };
 
+  const createMagicalGirl = async (magicalGirl: CreateMagicalGirl) => {
+    try {
+      setIsLoading(true);
+
+      const response = await fetch(`${API_URL}/magical-girls`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(magicalGirl),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to create magical girl");
+      }
+
+      const { data } = await response.json();
+      setMagicalGirls([...magicalGirls, data.magicGirl]);
+    } catch (error) {
+      setError(error as Error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return {
     getMagicalGirls,
     magicalGirls: filteredGirls,
@@ -113,6 +139,7 @@ const useMagicalGirls = () => {
     isLoading,
     error,
     saveStatus,
+    createMagicalGirl,
   };
 };
 
