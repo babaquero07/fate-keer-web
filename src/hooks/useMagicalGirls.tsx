@@ -49,7 +49,7 @@ const useMagicalGirls = () => {
   };
 
   const filterByStatus = (status: StatusOption) => {
-    if (status === "all") {
+    if (status === "All") {
       setFilteredGirls(magicalGirls);
       return;
     }
