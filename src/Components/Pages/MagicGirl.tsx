@@ -14,7 +14,9 @@ const MagicGirl = () => {
   }, [id]);
 
   const showLogs = useMemo(() => {
-    return magicalGirl?.status_logs?.length > 0;
+    if (!magicalGirl?.status_logs) return false;
+
+    return magicalGirl.status_logs?.length > 0;
   }, [magicalGirl]);
 
   const handleSaveStatus = (status: string) => {
