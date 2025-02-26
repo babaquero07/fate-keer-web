@@ -19,7 +19,7 @@ const Home = () => {
   if (isLoading) return <Loading />;
 
   if (error && error.name !== "AbortError") {
-    return alert(error.message);
+    return <span className="text-3xl text-red-400">{error.message}</span>;
   }
 
   return (
